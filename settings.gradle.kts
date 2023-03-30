@@ -27,4 +27,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "Gross"
 include(":app")
+
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
  

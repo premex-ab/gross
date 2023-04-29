@@ -14,9 +14,8 @@ private enum class AndroidPlugin {
     DynamicFeature,
 }
 
-class CopyLicenseeReportToAssetsPlugin : Plugin<Project> {
+class GrossPlugin : Plugin<Project> {
     override fun apply(project: Project) {
-
         val extension = project.extensions.create("gross", GrossExtension::class.java)
         extension.enableKotlinCodeGeneration.convention(true)
         extension.enableAndroidAssetGeneration.convention(false)
@@ -68,7 +67,7 @@ class CopyLicenseeReportToAssetsPlugin : Plugin<Project> {
                     copyArtifactsTask,
                     AssetCopyTask::outputDirectory
                 )
-                copyArtifactsTask.dependsOn("licensee${capitalizedVariantName}")
+                copyArtifactsTask.dependsOn("licensee$capitalizedVariantName")
             }
 
             if (extension.enableKotlinCodeGeneration.get()) {
@@ -82,7 +81,7 @@ class CopyLicenseeReportToAssetsPlugin : Plugin<Project> {
                     CodeGenerationTask::outputDirectory
                 )
 
-                codeGenerationTask.dependsOn("licensee${capitalizedVariantName}")
+                codeGenerationTask.dependsOn("licensee$capitalizedVariantName")
             }
         }
     }

@@ -1,7 +1,14 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    kotlin("jvm") version "1.8.20"
+    kotlin("jvm") version "1.8.10"
     kotlin("plugin.serialization") version "1.8.10"
+    id("io.gitlab.arturbosch.detekt") version "1.22.0"
+
+}
+
+detekt {
+    autoCorrect = true
+    buildUponDefaultConfig = true
 }
 
 group = "se.premex.gross"
@@ -21,4 +28,6 @@ dependencies {
 
     testImplementation(libs.org.jetbrains.kotlin.kotlin.test.junit)
     testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
+
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
 }

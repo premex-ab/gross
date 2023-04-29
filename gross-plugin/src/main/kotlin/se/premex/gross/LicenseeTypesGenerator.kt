@@ -122,11 +122,4 @@ class LicenseeTypesGenerator(private val packageName: String) {
                 .build()
         )
         .build()
-
-    val artifactListType = LIST.parameterizedBy(
-        ClassName(
-            packageName,
-            artifactTypeSpec.name!!
-        )
-    )
 }

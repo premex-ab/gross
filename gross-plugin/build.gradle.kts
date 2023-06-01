@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
     kotlin("plugin.serialization") version "1.8.21"
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "0.21.0"
+    id("com.gradle.plugin-publish") version "1.2.0"
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
     id("io.gitlab.arturbosch.detekt") version "1.23.0"

@@ -6,7 +6,7 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.nl.littlerobots.version.catalog.update)
-    kotlin("plugin.serialization") version "1.8.21"
+    kotlin("plugin.serialization") version "1.9.21"
     id("io.gitlab.arturbosch.detekt") version "1.23.4"
 }
 
@@ -38,7 +38,7 @@ tasks.withType<DependencyUpdatesTask> {
 android {
     namespace = "se.premex.gross.oss"
 
-    compileSdk = 33
+    compileSdk = 34
     defaultConfig {
         minSdk = 24
     }
@@ -66,8 +66,8 @@ android {
 group = "se.premex.gross"
 version = "1.0"
 
-java {
-    toolchain {
+kotlin {
+    jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
         vendor.set(JvmVendorSpec.AZUL)
     }
@@ -83,6 +83,7 @@ dependencies {
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.foundation)
 
+    implementation(platform(libs.org.jetbrains.kotlinx.kotlinx.serialization.bom))
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
 
     implementation(libs.androidx.compose.material.material.icons.extended)

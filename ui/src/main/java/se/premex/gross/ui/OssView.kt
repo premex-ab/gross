@@ -13,7 +13,6 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material3.AlertDialog
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.Text
@@ -35,7 +34,6 @@ import androidx.compose.ui.unit.dp
 import se.premex.gross.core.Artifact
 import se.premex.gross.oss.R
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Suppress("FunctionNaming")
 fun OssView(artifacts: List<Artifact>, modifier: Modifier = Modifier) {
@@ -84,7 +82,7 @@ fun OssView(artifacts: List<Artifact>, modifier: Modifier = Modifier) {
             }
             items(list) { artifact ->
                 ListItem(
-                    headlineText = {
+                    headlineContent = {
                         Text(text = artifact.title)
                     },
                     modifier = Modifier.clickable {
@@ -121,7 +119,6 @@ fun LicenseSelectorPreview() {
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Suppress("FunctionNaming")
 fun LicenseSelector(title: String, licenses: List<License>, close: () -> Unit) {
@@ -139,7 +136,7 @@ fun LicenseSelector(title: String, licenses: List<License>, close: () -> Unit) {
                 Column {
                     licenses.forEach { license ->
                         ListItem(
-                            headlineText = {
+                            headlineContent = {
                                 Text(text = license.title)
                             },
                             leadingContent = {

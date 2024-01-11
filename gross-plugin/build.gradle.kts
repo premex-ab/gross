@@ -1,15 +1,16 @@
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.8.21"
+    kotlin("plugin.serialization") version "1.9.21"
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "0.21.0"
+    alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
     id("io.gitlab.arturbosch.detekt") version "1.23.4"
 }
 
-java {
-    toolchain {
+kotlin {
+    jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
         vendor.set(JvmVendorSpec.AZUL)
     }
@@ -33,13 +34,19 @@ buildscript {
 dependencies {
     implementation(libs.com.android.tools.build.gradle)
     implementation(libs.org.jetbrains.kotlin.kotlin.gradle.plugin)
-    implementation("com.squareup:kotlinpoet:1.14.2") {
+    implementation(libs.com.squareup.kotlinpoet) {
         exclude(module = "kotlin-reflect")
     }
-
+    implementation(platform(libs.org.jetbrains.kotlinx.kotlinx.serialization.bom))
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json.okio)
     implementation(libs.com.squareup.okio)
+    compileOnly(libs.com.squareup.licensee)
+
+    testImplementation(platform(libs.org.junit.junit.bom))
+    testImplementation(libs.org.junit.jupiter.junit.jupiter.api)
+    testImplementation(libs.org.junit.jupiter.junit.jupiter.params)
+    testImplementation(libs.com.google.truth)
 
     // https://github.com/gradle/gradle/issues/15383
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
@@ -56,6 +63,19 @@ tasks.test {
 version = androidGitVersion.name().replace("v", "")
 group = "se.premex"
 
+tasks.named("test") {
+    (this as Test).systemProperties["grossVersion"] = version
+    dependsOn(":publishAllPublicationsToTestingRepository")
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "testing"
+            url = uri(layout.buildDirectory.dir("localMaven"))
+        }
+    }
+}
 
 gradlePlugin {
     plugins {

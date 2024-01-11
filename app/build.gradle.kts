@@ -15,12 +15,12 @@ gross {
 }
 android {
     namespace = "se.premex.gross"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "se.premex.gross"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -52,15 +52,15 @@ android {
     composeOptions {
         kotlinCompilerExtensionVersion = libs.versions.androidx.compose.compiler.get()
     }
-    packagingOptions {
+    packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
 }
 
-java {
-    toolchain {
+kotlin {
+    jvmToolchain {
         languageVersion.set(JavaLanguageVersion.of(17))
         vendor.set(JvmVendorSpec.AZUL)
     }

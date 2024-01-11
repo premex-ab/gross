@@ -12,7 +12,7 @@ private const val ARTIFACTS_SMALL = """[
     {
         "groupId": "androidx.activity",
         "artifactId": "activity",
-        "version": "1.7.0",
+        "version": "1.2.3",
         "name": "Activity",
         "spdxLicenses": [
             {
@@ -31,7 +31,7 @@ private const val ARTIFACTS_MEDIUM = """[
     {
         "groupId": "androidx.activity",
         "artifactId": "activity",
-        "version": "1.7.0",
+        "version": "1.2.3",
         "name": "Activity",
         "spdxLicenses": [
             {
@@ -47,7 +47,7 @@ private const val ARTIFACTS_MEDIUM = """[
     {
         "groupId": "androidx.activity",
         "artifactId": "activity-compose",
-        "version": "1.7.0",
+        "version": "1.2.3",
         "name": "Activity Compose",
         "spdxLicenses": [
             {
@@ -63,7 +63,7 @@ private const val ARTIFACTS_MEDIUM = """[
     {
         "groupId": "androidx.activity",
         "artifactId": "activity-ktx",
-        "version": "1.7.0",
+        "version": "1.2.3",
         "name": "Activity Kotlin Extensions",
         "spdxLicenses": [
             {

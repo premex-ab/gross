@@ -1,7 +1,7 @@
 package se.premex.gross
 
+import app.cash.licensee.LicenseeTask
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
-import com.android.build.gradle.internal.tasks.factory.dependsOn
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.reporting.ReportingExtension
@@ -56,32 +56,52 @@ class GrossPlugin : Plugin<Project> {
                 }
             }
 
-            val artifactsFile = reportingExtension.file("licensee/${variant.name}/artifacts.json")
+            val licensee17ArtifactsFile = reportingExtension.file("licensee/${variant.name}/artifacts.json")
+            val licensee18ArtifactsFile =
+                reportingExtension.file("licensee/android$capitalizedVariantName/artifacts.json")
+
             if (extension.enableAndroidAssetGeneration.get()) {
                 val copyArtifactsTask =
                     project.tasks.register<AssetCopyTask>("copy${capitalizedVariantName}LicenseeReportToAssets") {
-                        inputFile.set(artifactsFile)
                         targetFileName.set(extension.androidAssetFileName.get())
+
+                        project.tasks.withType(LicenseeTask::class.java)
+                            .findByName("licenseeAndroid$capitalizedVariantName")?.let {
+                                inputFile.set(licensee18ArtifactsFile)
+                                dependsOn(it)
+                            }
+                        project.tasks.withType(LicenseeTask::class.java)
+                            .findByName("licensee$capitalizedVariantName")?.let {
+                                inputFile.set(licensee17ArtifactsFile)
+                                dependsOn(it)
+                            }
                     }
+
                 variant.sources.assets!!.addGeneratedSourceDirectory(
                     copyArtifactsTask,
                     AssetCopyTask::outputDirectory
                 )
-                copyArtifactsTask.dependsOn("licensee$capitalizedVariantName")
             }
 
             if (extension.enableKotlinCodeGeneration.get()) {
                 val codeGenerationTask =
                     project.tasks.register<CodeGenerationTask>("${capitalizedVariantName}LicenseeReportToKotlin") {
-                        inputFile.set(artifactsFile)
+                        project.tasks.withType(LicenseeTask::class.java)
+                            .findByName("licenseeAndroid$capitalizedVariantName")?.let {
+                                inputFile.set(licensee18ArtifactsFile)
+                                dependsOn(it)
+                            }
+                        project.tasks.withType(LicenseeTask::class.java)
+                            .findByName("licensee$capitalizedVariantName")?.let {
+                                inputFile.set(licensee17ArtifactsFile)
+                                dependsOn(it)
+                            }
                     }
 
                 variant.sources.java!!.addGeneratedSourceDirectory(
                     codeGenerationTask,
                     CodeGenerationTask::outputDirectory
                 )
-
-                codeGenerationTask.dependsOn("licensee$capitalizedVariantName")
             }
         }
     }

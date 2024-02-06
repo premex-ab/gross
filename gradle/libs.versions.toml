@@ -58,6 +58,6 @@ app-cash-licensee = { id = "app.cash.licensee", version.ref = "licensee" }
 com-android-application = { id = "com.android.application", version.ref = "com-android-application" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-application" }
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.51.0"
-com-vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.26.0" }
+com-vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.27.0" }
 nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.4"
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }

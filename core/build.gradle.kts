@@ -30,5 +30,5 @@ dependencies {
     testImplementation(libs.org.jetbrains.kotlin.kotlin.test.junit)
     testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.4")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.5")
 }

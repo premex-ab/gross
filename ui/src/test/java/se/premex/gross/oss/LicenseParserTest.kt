@@ -2,7 +2,6 @@ package se.premex.gross.oss
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
 import okio.buffer
 import okio.source
 import se.premex.gross.core.LicenseParser

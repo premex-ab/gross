@@ -19,11 +19,9 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalUriHandler
@@ -31,26 +29,20 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import se.premex.gross.core.Artifact
+import kotlinx.collections.immutable.ImmutableList
+import kotlinx.collections.immutable.ImmutableMap
+import kotlinx.collections.immutable.persistentListOf
 import se.premex.gross.oss.R
 
+@OptIn(ExperimentalFoundationApi::class)
 @Composable
 @Suppress("FunctionNaming")
-fun OssView(artifacts: List<Artifact>, modifier: Modifier = Modifier) {
-    val viewData = artifacts.map { artifact ->
-        val licenses =
-            artifact.spdxLicenses.spdxToLicenses() + artifact.unknownLicenses.unknownToLicenses()
-
-        val nameOrPackage =
-            artifact.name ?: ("${artifact.groupId}:${artifact.artifactId}:${artifact.version}")
-
-        ViewArtifact(nameOrPackage, licenses)
-    }.sortedBy { it.title }
-
-    val licenses: SnapshotStateList<License> = remember { mutableStateListOf() }
-    var alertTitle by remember { mutableStateOf("") }
-    LicenseSelector(alertTitle, licenses) {
-        licenses.clear()
+fun OssView(groupedArtifacts: ImmutableMap<String, ImmutableList<ViewArtifact>>, modifier: Modifier = Modifier) {
+    var viewArtifact: ViewArtifact? by remember { mutableStateOf(null) }
+    viewArtifact?.let {
+        LicenseSelector(it) {
+            viewArtifact = null
+        }
     }
 
     LazyColumn(
@@ -74,20 +66,17 @@ fun OssView(artifacts: List<Artifact>, modifier: Modifier = Modifier) {
             }
         }
 
-        val grouped: Map<String, List<ViewArtifact>> =
-            viewData.groupBy { it.title[0].uppercaseChar().toString() }
-        grouped.forEach { (title, list) ->
+        groupedArtifacts.forEach { (title, list) ->
             stickyHeader {
                 CharacterHeader(title)
             }
             items(list) { artifact ->
                 ListItem(
                     headlineContent = {
-                        Text(text = artifact.title)
+                        Text(text = artifact.name)
                     },
                     modifier = Modifier.clickable {
-                        alertTitle = artifact.title
-                        licenses.addAll(artifact.licenses)
+                        viewArtifact = artifact
                     }
                 )
             }
@@ -109,32 +98,39 @@ fun CharacterHeader(initial: String) {
     )
 }
 
+@Suppress("FunctionNaming", "Unused")
 @Preview(showSystemUi = true)
 @Composable
-@Suppress("FunctionNaming")
 fun LicenseSelectorPreview() {
     Column(Modifier.fillMaxSize()) {
-        LicenseSelector("Licenses", listOf(License("aaa", "http://google.se"))) {
-        }
+        val viewLicenseList =
+            persistentListOf(ViewLicense("aaa", "se.coordinate:easypark:1.0.0", "http://google.se"))
+        LicenseSelector(
+            viewArtifact = ViewArtifact(
+                "View",
+                "Coordinate",
+                viewLicenseList
+            )
+        ) {}
     }
 }
 
 @Composable
 @Suppress("FunctionNaming")
-fun LicenseSelector(title: String, licenses: List<License>, close: () -> Unit) {
+fun LicenseSelector(viewArtifact: ViewArtifact, close: () -> Unit) {
     val uriHandler = LocalUriHandler.current
 
-    if (licenses.isNotEmpty()) {
+    if (viewArtifact.licenses.isNotEmpty()) {
         AlertDialog(
             onDismissRequest = {
                 close()
             },
             title = {
-                Text(text = title)
+                Text(text = viewArtifact.name)
             },
             text = {
                 Column {
-                    licenses.forEach { license ->
+                    viewArtifact.licenses.forEach { license ->
                         ListItem(
                             headlineContent = {
                                 Text(text = license.title)

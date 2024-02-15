@@ -5,7 +5,6 @@ import com.squareup.kotlinpoet.FileSpec
 import com.squareup.kotlinpoet.MemberName
 import com.squareup.kotlinpoet.PropertySpec
 import com.squareup.kotlinpoet.TypeSpec
-import kotlinx.serialization.ExperimentalSerializationApi
 import okio.buffer
 import okio.source
 import org.gradle.api.DefaultTask
@@ -31,7 +30,6 @@ abstract class CodeGenerationTask : DefaultTask() {
     abstract val inputFile: RegularFileProperty
 
     @TaskAction
-    @ExperimentalSerializationApi
     fun action() {
         val licenseeTypesGenerator = LicenseeTypesGenerator(packageName)
 
@@ -42,7 +40,7 @@ abstract class CodeGenerationTask : DefaultTask() {
             .addType(licenseeTypesGenerator.artifactTypeSpec)
             .build().writeTo(outputDirectory.asFile.get())
 
-        val artifacts = LicenseParser().decode(inputFile.asFile.get().source().buffer())
+        val artifacts = LicenseParser.decode(inputFile.asFile.get().source().buffer())
 
         val artifactCodeGenerator = ArtifactCodeGenerator(
             packageName = packageName,

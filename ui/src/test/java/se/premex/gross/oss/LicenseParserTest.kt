@@ -1,8 +1,6 @@
 package se.premex.gross.oss
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
-import kotlinx.serialization.ExperimentalSerializationApi
 import okio.buffer
 import okio.source
 import se.premex.gross.core.LicenseParser
@@ -80,18 +78,12 @@ private const val ARTIFACTS_MEDIUM = """[
 
 class LicenseParserTest {
     @Test
-    @ExperimentalCoroutinesApi
-    @ExperimentalSerializationApi
     fun testSmall() = runTest {
-        val licenseParser = object : LicenseParser {}
-        licenseParser.decode(ARTIFACTS_SMALL.byteInputStream().source().buffer())
+        LicenseParser.decode(ARTIFACTS_SMALL.byteInputStream().source().buffer())
     }
 
     @Test
-    @ExperimentalCoroutinesApi
-    @ExperimentalSerializationApi
     fun testMedium() = runTest {
-        val licenseParser = object : LicenseParser {}
-        licenseParser.decode(ARTIFACTS_MEDIUM.byteInputStream().source().buffer())
+        LicenseParser.decode(ARTIFACTS_MEDIUM.byteInputStream().source().buffer())
     }
 }

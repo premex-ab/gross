@@ -7,8 +7,6 @@ import okio.buffer
 import okio.source
 import se.premex.gross.core.Artifact
 import se.premex.gross.core.LicenseParser
-import se.premex.gross.core.SpdxLicenses
-import se.premex.gross.core.UnknownLicenses
 
 class AssetLicenseParser(private val assetManager: AssetManager) {
 
@@ -18,13 +16,3 @@ class AssetLicenseParser(private val assetManager: AssetManager) {
             LicenseParser.decode(source)
         }
 }
-
-internal fun List<UnknownLicenses>?.unknownToLicenses(): List<License> =
-    orEmpty().map { unknown -> unknown.asLicense() }
-
-internal fun UnknownLicenses.asLicense(): License = License(name, url)
-
-internal fun List<SpdxLicenses>?.spdxToLicenses(): List<License> =
-    orEmpty().map { spdx -> spdx.asLicense() }
-
-internal fun SpdxLicenses.asLicense() = License(title = name, url = url)

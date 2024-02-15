@@ -17,7 +17,6 @@ import org.gradle.api.tasks.PathSensitive
 import org.gradle.api.tasks.PathSensitivity
 import org.gradle.api.tasks.TaskAction
 import se.premex.gross.core.LicenseParser
-import java.nio.charset.Charset
 
 @CacheableTask
 abstract class CodeGenerationTask : DefaultTask() {

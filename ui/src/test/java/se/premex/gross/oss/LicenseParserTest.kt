@@ -80,18 +80,12 @@ private const val ARTIFACTS_MEDIUM = """[
 
 class LicenseParserTest {
     @Test
-    @ExperimentalCoroutinesApi
-    @ExperimentalSerializationApi
     fun testSmall() = runTest {
-        val licenseParser = object : LicenseParser {}
-        licenseParser.decode(ARTIFACTS_SMALL.byteInputStream().source().buffer())
+        LicenseParser.decode(ARTIFACTS_SMALL.byteInputStream().source().buffer())
     }
 
     @Test
-    @ExperimentalCoroutinesApi
-    @ExperimentalSerializationApi
     fun testMedium() = runTest {
-        val licenseParser = object : LicenseParser {}
-        licenseParser.decode(ARTIFACTS_MEDIUM.byteInputStream().source().buffer())
+        LicenseParser.decode(ARTIFACTS_MEDIUM.byteInputStream().source().buffer())
     }
 }

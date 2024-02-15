@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
     kotlin("plugin.serialization") version "1.9.22"
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "0.21.0"
+    id("com.gradle.plugin-publish") version "1.2.1"
     alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
@@ -86,19 +86,19 @@ gradlePlugin {
     }
 }
 
-pluginBundle {
-    website = "https://github.com/premex-ab/gross"
-    vcsUrl = "https://github.com/premex-ab/gross.git"
+gradlePlugin {
+    website.set("https://github.com/premex-ab/gross")
+    vcsUrl.set("https://github.com/premex-ab/gross.git")
     description = "A plugin that generates a list of open source licenses you depend on"
-    tags = mutableListOf("tooling", "open source", "premex")
 
     (plugins) {
         "gross" {
+            tags.set(mutableListOf("tooling", "open source", "premex"))
             displayName = "Generates a list of open source licenses you depend on"
             description =
                 """Generates a list of open source licenses you depend on. Depends on the output of licensee from cashapp - https://github.com/cashapp/licensee.
                     |
-                    |Can generate a static list or copy licenses to android assets. 
+                    |Can generate a static list or copy licenses to android assets.
                     |
                     |As licensee supports KMM the plugin could support more platforms but current only supports android.
             """.trimMargin()

@@ -77,11 +77,7 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
 
-    // In theory we should be able to refer to "se.premex.gross:ui-oss" here and set a mapping up
-    // in the includeBuild like this
-    // dependencySubstitution { substitute(module("se.premex.gross:ui-oss")).using(project(":oss")) }
-    // Unfortunately this does not work - maybe same issue as https://youtrack.jetbrains.com/issue/KTIJ-13435
-    implementation("se.premex.gross:ui:1.0")
+    implementation("se.premex.gross:ui")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

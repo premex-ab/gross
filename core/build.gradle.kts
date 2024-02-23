@@ -3,7 +3,14 @@ plugins {
     kotlin("jvm") version "1.9.22"
     kotlin("plugin.serialization") version "1.9.22"
     id("io.gitlab.arturbosch.detekt") version "1.23.5"
+    id("com.gradle.plugin-publish") version "1.2.1"
+    alias(libs.plugins.com.vanniktech.maven.publish)
+    id("maven-publish")
+    id("com.gladed.androidgitversion") version "0.4.14"
+}
 
+androidGitVersion {
+    tagPattern = "^v[0-9]+.*"
 }
 
 detekt {
@@ -11,8 +18,8 @@ detekt {
     buildUponDefaultConfig = true
 }
 
+version = androidGitVersion.name().replace("v", "") + providers.environmentVariable("VERSION_SUFFIX").getOrElse("")
 group = "se.premex.gross"
-version = "1.0"
 
 kotlin {
     jvmToolchain {

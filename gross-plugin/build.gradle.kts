@@ -60,7 +60,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-version = androidGitVersion.name().replace("v", "")
+version = androidGitVersion.name().replace("v", "") + providers.environmentVariable("VERSION_SUFFIX").getOrElse("")
 group = "se.premex"
 
 tasks.named("test") {

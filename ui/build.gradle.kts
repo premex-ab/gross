@@ -8,7 +8,7 @@ plugins {
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.nl.littlerobots.version.catalog.update)
     kotlin("plugin.serialization") version "1.9.22"
-    id("io.gitlab.arturbosch.detekt") version "1.23.5"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
 }
 
 detekt {
@@ -100,5 +100,5 @@ dependencies {
     testImplementation(libs.org.jetbrains.kotlin.kotlin.test.junit)
     testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.5")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
 }

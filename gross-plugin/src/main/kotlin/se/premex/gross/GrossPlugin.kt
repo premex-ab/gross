@@ -4,8 +4,10 @@ import app.cash.licensee.LicenseeTask
 import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.reporting.ReportingExtension
 import org.gradle.kotlin.dsl.register
+import java.io.File
 import java.util.Locale
 
 private enum class AndroidPlugin {
@@ -67,13 +69,11 @@ class GrossPlugin : Plugin<Project> {
 
                         project.tasks.withType(LicenseeTask::class.java)
                             .findByName("licenseeAndroid$capitalizedVariantName")?.let {
-                                inputFile.set(licensee18ArtifactsFile)
-                                dependsOn(it)
+                                wireAssetCopyingTask(this, inputFile, it, licensee18ArtifactsFile)
                             }
                         project.tasks.withType(LicenseeTask::class.java)
                             .findByName("licensee$capitalizedVariantName")?.let {
-                                inputFile.set(licensee17ArtifactsFile)
-                                dependsOn(it)
+                                wireAssetCopyingTask(this, inputFile, it, licensee17ArtifactsFile)
                             }
                     }
 
@@ -88,13 +88,11 @@ class GrossPlugin : Plugin<Project> {
                     project.tasks.register<CodeGenerationTask>("${capitalizedVariantName}LicenseeReportToKotlin") {
                         project.tasks.withType(LicenseeTask::class.java)
                             .findByName("licenseeAndroid$capitalizedVariantName")?.let {
-                                inputFile.set(licensee18ArtifactsFile)
-                                dependsOn(it)
+                                wireCodeGenerationTask(this, inputFile, it, licensee18ArtifactsFile)
                             }
                         project.tasks.withType(LicenseeTask::class.java)
                             .findByName("licensee$capitalizedVariantName")?.let {
-                                inputFile.set(licensee17ArtifactsFile)
-                                dependsOn(it)
+                                wireCodeGenerationTask(this, inputFile, it, licensee17ArtifactsFile)
                             }
                     }
 
@@ -103,6 +101,38 @@ class GrossPlugin : Plugin<Project> {
                     CodeGenerationTask::outputDirectory
                 )
             }
+        }
+    }
+
+    private fun wireCodeGenerationTask(
+        task: CodeGenerationTask,
+        inputFile: RegularFileProperty,
+        licenseeTask: LicenseeTask,
+        licenseeArtifactsFile: File
+    ) {
+        try {
+            // licensee 1.11 + behavior
+            inputFile.set(licenseeTask.jsonOutput)
+        } catch (_: NoSuchMethodError) {
+            // licensee 1.7/1.8 behavior - jsonOutput was introduced in 1.11
+            inputFile.set(licenseeArtifactsFile)
+            task.dependsOn(licenseeTask)
+        }
+    }
+
+    private fun wireAssetCopyingTask(
+        task: AssetCopyTask,
+        inputFile: RegularFileProperty,
+        licenseeTask: LicenseeTask,
+        licenseeArtifactsFile: File
+    ) {
+        try {
+            // licensee 1.11 + behavior
+            inputFile.set(licenseeTask.jsonOutput)
+        } catch (_: NoSuchMethodError) {
+            // licensee 1.7/1.8 behavior - jsonOutput was introduced in 1.11
+            inputFile.set(licenseeArtifactsFile)
+            task.dependsOn(licenseeTask)
         }
     }
 }

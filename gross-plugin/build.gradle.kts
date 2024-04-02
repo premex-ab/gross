@@ -3,7 +3,7 @@ plugins {
     kotlin("plugin.serialization") version "1.9.23"
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.2.1"
-    alias(libs.plugins.com.vanniktech.maven.publish)
+//    alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
     id("io.gitlab.arturbosch.detekt") version "1.23.6"

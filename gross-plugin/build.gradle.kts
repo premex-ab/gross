@@ -1,12 +1,12 @@
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.9.22"
+    kotlin("plugin.serialization") version "1.9.23"
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.2.1"
     alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
-    id("io.gitlab.arturbosch.detekt") version "1.23.5"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
 }
 
 kotlin {
@@ -51,7 +51,7 @@ dependencies {
     // https://github.com/gradle/gradle/issues/15383
     implementation(files(libs.javaClass.superclass.protectionDomain.codeSource.location))
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.5")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
 
     testImplementation(kotlin("test"))
 }

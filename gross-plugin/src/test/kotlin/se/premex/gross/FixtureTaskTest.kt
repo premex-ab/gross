@@ -20,7 +20,7 @@ class FixtureTaskTest {
 //            "java_licensee_1_8",
             "android_licensee_1_7",
             "android_licensee_1_8",
-//            "MyApplication6",
+            "android_licensee_1_11",
         ]
     )
     fun checkDescriptionOfTasks(input: String) {
@@ -28,16 +28,6 @@ class FixtureTaskTest {
 
         @Suppress("UNUSED_VARIABLE")
         val result = createRunner(fixtureDir).build()
-
-//        assertThat(result.output).contains(
-//            """
-//            |Ownership tasks
-//            |---------------
-//            |generateOwnership - Generates the supported and configured VCS OWNERSHIP files
-//            |validateOwnership - Validate the content in OWNERSHIP.toml configuration files
-//            |
-//            """.trimMargin()
-//        )
     }
 
     private fun createRunner(fixtureDir: File): GradleRunner {

@@ -35,7 +35,8 @@ jobs:
         run: ./gradlew :core:check --scan
 
       - name: Run validate on plugin
-        run: ./gradlew :gross-plugin:check :gross-plugin:validatePlugins --scan
+        working-directory: gross-plugin
+        run: ./gradlew check validatePlugins --scan
 
       - name: Upload reports
         uses: actions/upload-artifact@v4
@@ -45,8 +46,9 @@ jobs:
           path: '**/build/test-results/test/*'
 
       - name: Publish Gradle Plugin
+        working-directory: gross-plugin
         env:
           KEY: ${{ secrets.GRADLE_PUBLISH_KEY }}
           SECRET: ${{ secrets.GRADLE_PUBLISH_SECRET }}
         run: |
-          ./gradlew -Dgradle.publish.key=$KEY -Dgradle.publish.secret=$SECRET :gross-plugin:publishPlugins
+          ./gradlew -Dgradle.publish.key=$KEY -Dgradle.publish.secret=$SECRET publishPlugins --no-configuration-cache

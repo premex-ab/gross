@@ -78,21 +78,15 @@ publishing {
 }
 
 gradlePlugin {
-    plugins {
-        create("gross") {
-            id = "se.premex.gross"
-            implementationClass = "se.premex.gross.GrossPlugin"
-        }
-    }
-}
-
-gradlePlugin {
     website.set("https://github.com/premex-ab/gross")
     vcsUrl.set("https://github.com/premex-ab/gross.git")
     description = "A plugin that generates a list of open source licenses you depend on"
 
-    (plugins) {
-        "gross" {
+    plugins {
+        create("gross") {
+            id = "se.premex.gross"
+            implementationClass = "se.premex.gross.GrossPlugin"
+
             tags.set(mutableListOf("tooling", "open source", "premex"))
             displayName = "Generates a list of open source licenses you depend on"
             description =

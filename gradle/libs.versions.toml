@@ -1,5 +1,5 @@
 [versions]
-activity-compose = "1.8.2"
+activity-compose = "1.9.0"
 androidx-compose-compiler = "1.5.11"
 androidx-core = "1.13.0"
 androidx-test-ext-junit = "1.1.5"

@@ -1,6 +1,6 @@
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.9.23"
+    kotlin("plugin.serialization") version "1.9.24"
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.2.1"
 //    alias(libs.plugins.com.vanniktech.maven.publish)

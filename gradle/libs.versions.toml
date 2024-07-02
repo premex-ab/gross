@@ -9,7 +9,7 @@ core-ktx = "1.13.0"
 espresso-core = "3.5.1"
 junit = "4.13.2"
 licensee = "1.11.0"
-lifecycle-runtime-ktx = "2.7.0"
+lifecycle-runtime-ktx = "2.8.3"
 org-jetbrains-kotlin-android = "1.9.23"
 
 [libraries]

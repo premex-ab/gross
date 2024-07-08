@@ -30,7 +30,7 @@ androidx-compose-ui-ui-text = { module = "androidx.compose.ui:ui-text" }
 com-google-truth = "com.google.truth:truth:1.4.2"
 com-squareup-okio = "com.squareup.okio:okio:3.9.0"
 com-squareup-licensee = { module = "app.cash.licensee:licensee-gradle-plugin", version.ref = "licensee" }
-com-squareup-kotlinpoet = "com.squareup:kotlinpoet:1.16.0"
+com-squareup-kotlinpoet = "com.squareup:kotlinpoet:1.18.0"
 androidx-core-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 core-ktx = { module = "androidx.core:core-ktx", version.ref = "core-ktx" }
 espresso-core = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso-core" }

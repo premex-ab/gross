@@ -1,12 +1,12 @@
 plugins {
     `kotlin-dsl`
-    kotlin("plugin.serialization") version "1.9.23"
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     id("java-gradle-plugin")
     id("com.gradle.plugin-publish") version "1.2.1"
 //    alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
+    alias(libs.plugins.io.gitlab.arturbosch.detekt)
 }
 
 kotlin {

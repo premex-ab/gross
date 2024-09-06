@@ -7,8 +7,9 @@ plugins {
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.com.github.ben.manes.versions)
     alias(libs.plugins.nl.littlerobots.version.catalog.update)
-    kotlin("plugin.serialization") version "1.9.23"
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
+    alias(libs.plugins.io.gitlab.arturbosch.detekt)
+    alias(libs.plugins.org.jetbrains.kotlin.plugin.compose)
 }
 
 detekt {

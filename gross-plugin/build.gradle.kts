@@ -1,12 +1,23 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     `kotlin-dsl`
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "1.2.1"
+    id("com.gradle.plugin-publish") version "1.3.0"
 //    alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
-    id("com.gladed.androidgitversion") version "0.4.14"
     alias(libs.plugins.io.gitlab.arturbosch.detekt)
+}
+
+val versionFile = File("version.properties")
+val versions = Properties().apply {
+    if (versionFile.exists()) {
+        FileInputStream(versionFile).use {
+            load(it)
+        }
+    }
 }
 
 kotlin {
@@ -14,10 +25,6 @@ kotlin {
         languageVersion.set(JavaLanguageVersion.of(17))
         vendor.set(JvmVendorSpec.AZUL)
     }
-}
-
-androidGitVersion {
-    tagPattern = "^v[0-9]+.*"
 }
 
 detekt {
@@ -60,7 +67,7 @@ tasks.test {
     useJUnitPlatform()
 }
 
-version = androidGitVersion.name().replace("v", "")
+version = versions.getProperty("V_VERSION", "0.0.1")
 group = "se.premex"
 
 tasks.named("test") {

@@ -25,6 +25,10 @@ jobs:
           java-version: 17
           distribution: zulu
 
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
+
       - name: Run verifications
         run: ./gradlew check --scan
 

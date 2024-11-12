@@ -27,6 +27,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
+
       - name: Run verifications
         run: ./gradlew check --scan
 
@@ -53,6 +57,10 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
+
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
 
       - name: Run validate on ui
         run: ./gradlew :ui:check --scan
@@ -81,6 +89,10 @@ jobs:
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
 
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
+
       - name: Run validate on core
         run: ./gradlew :core:check --scan
 
@@ -107,6 +119,10 @@ jobs:
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
+
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
 
       - name: Run validate on plugin
         working-directory: gross-plugin

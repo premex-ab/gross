@@ -2,7 +2,7 @@ plugins {
     `kotlin-dsl`
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     id("java-gradle-plugin")
-    id("com.gradle.plugin-publish") version "1.2.1"
+    id("com.gradle.plugin-publish") version "1.3.0"
 //    alias(libs.plugins.com.vanniktech.maven.publish)
     id("maven-publish")
     id("com.gladed.androidgitversion") version "0.4.14"

@@ -40,7 +40,7 @@ class ArtifactCodeGenerator(
             appendLine("""spdxLicenses = %M(""")
             arguments.add(MemberName("kotlin.collections", "listOf"))
             artifact.spdxLicenses?.forEach {
-                appendLine("""%T(identifier = %S, name = %S, url = %S)""".trimMargin())
+                appendLine("""%T(identifier = %S, name = %S, url = %S),""".trimMargin())
                 arguments.add(ClassName(packageName, spdxLicensesTypeSpec.name!!))
                 arguments.add(it.identifier)
                 arguments.add(it.name)
@@ -59,7 +59,7 @@ class ArtifactCodeGenerator(
             appendLine("""unknownLicenses = %M(""")
             arguments.add(MemberName("kotlin.collections", "listOf"))
             artifact.unknownLicenses?.forEach {
-                appendLine("""%T(name = %S, url = %S)""".trimMargin())
+                appendLine("""%T(name = %S, url = %S),""".trimMargin())
                 arguments.add(ClassName(packageName, unknownLicensesTypeSpec.name!!))
                 arguments.add(it.name)
                 arguments.add(it.url)

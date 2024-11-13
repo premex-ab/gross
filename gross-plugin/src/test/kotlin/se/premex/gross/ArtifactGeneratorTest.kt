@@ -110,13 +110,13 @@ class ArtifactGeneratorTest {
     version = "testVersion",
     name = "testName",
     spdxLicenses = kotlin.collections.listOf(
-    se.premex.gross.UnknownLicenses(identifier = "spdxId1", name = "spdxName1", url = "spdxUrl1")
-    se.premex.gross.UnknownLicenses(identifier = "spdxId2", name = "spdxName2", url = "spdxUrl2")
+    se.premex.gross.UnknownLicenses(identifier = "spdxId1", name = "spdxName1", url = "spdxUrl1"),
+    se.premex.gross.UnknownLicenses(identifier = "spdxId2", name = "spdxName2", url = "spdxUrl2"),
     ),
     scm = se.premex.gross.SpdxLicenses("testUrl"), 
     unknownLicenses = kotlin.collections.listOf(
-    se.premex.gross.Scm(name = "unknown1", url = "unknown1")
-    se.premex.gross.Scm(name = "unknown2", url = "unknown2")
+    se.premex.gross.Scm(name = "unknown1", url = "unknown1"),
+    se.premex.gross.Scm(name = "unknown2", url = "unknown2"),
     ),
     )
 

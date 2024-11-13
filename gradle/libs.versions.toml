@@ -59,7 +59,7 @@ io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref 
 com-android-application = { id = "com.android.application", version.ref = "com-android-application" }
 com-android-library = { id = "com.android.library", version.ref = "com-android-application" }
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.51.0"
-com-vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.28.0" }
+com-vanniktech-maven-publish = { id = "com.vanniktech.maven.publish", version = "0.30.0" }
 nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.5"
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }

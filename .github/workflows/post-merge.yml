@@ -23,6 +23,10 @@ jobs:
         uses: gradle/gradle-build-action@v3
         # gradle-home-cache-cleanup: true
 
+      - name: "Find version"
+        id: find_version
+        run: ./scripts/generate_versions.sh
+
       - name: Run verifications
         run: ./gradlew check --scan
 

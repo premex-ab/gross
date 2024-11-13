@@ -40,7 +40,7 @@ tasks.withType<DependencyUpdatesTask> {
 android {
     namespace = "se.premex.gross.oss"
 
-    compileSdk = 34
+    compileSdk = 35
     defaultConfig {
         minSdk = 24
     }

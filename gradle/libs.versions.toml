@@ -8,7 +8,7 @@ compose-bom = "2024.11.00"
 detekt = "1.23.7"
 espresso-core = "3.6.1"
 junit = "4.13.2"
-kotlin = "2.0.21"
+kotlin = "2.1.0"
 licensee = "1.12.0"
 lifecycle-runtime-ktx = "2.8.7"
 

@@ -60,7 +60,7 @@ com-android-library = { id = "com.android.library", version.ref = "com-android-a
 com-github-ben-manes-versions = "com.github.ben-manes.versions:0.52.0"
 com-vanniktech-maven-publish = "com.vanniktech.maven.publish:0.31.0"
 io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:0.8.5"
+nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:1.0.0"
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

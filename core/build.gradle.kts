@@ -1,6 +1,6 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    kotlin("jvm") version "2.1.10"
+    kotlin("jvm") version "2.1.20"
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.io.gitlab.arturbosch.detekt)
 
@@ -30,5 +30,5 @@ dependencies {
     testImplementation(libs.org.jetbrains.kotlin.kotlin.test.junit)
     testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
 }

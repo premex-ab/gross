@@ -3,7 +3,7 @@ plugins {
     kotlin("jvm") version "2.1.20"
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.io.gitlab.arturbosch.detekt)
-
+    id("maven-publish")
 }
 
 detekt {
@@ -31,4 +31,16 @@ dependencies {
     testImplementation(libs.org.jetbrains.kotlinx.kotlinx.coroutines.test)
 
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+            
+            groupId = "se.premex.gross"
+            artifactId = "core"
+            version = "1.0"
+        }
+    }
 }

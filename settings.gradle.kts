@@ -1,3 +1,6 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 pluginManagement {
     repositories {
         google()
@@ -39,14 +42,7 @@ rootProject.name = "Gross"
 
 includeBuild("gross-plugin")
 
-includeBuild("ui") {
-    dependencySubstitution {
-        substitute(module("se.premex.gross:ui"))
-            .using(project(":"))
-    }
-}
-includeBuild("core")
+include("ui")
+include("core")
 include(":app")
 
-enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
- 

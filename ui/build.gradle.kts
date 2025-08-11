@@ -4,7 +4,6 @@ import java.util.*
 plugins {
     alias(libs.plugins.com.android.library)
     alias(libs.plugins.org.jetbrains.kotlin.android)
-    alias(libs.plugins.nl.littlerobots.version.catalog.update)
     alias(libs.plugins.org.jetbrains.kotlin.plugin.serialization)
     alias(libs.plugins.io.gitlab.arturbosch.detekt)
     alias(libs.plugins.org.jetbrains.kotlin.plugin.compose)
@@ -43,7 +42,7 @@ kotlin {
 }
 
 dependencies {
-    api("se.premex.gross:core:1.0")
+    api(projects.core)
     implementation(libs.com.squareup.okio)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)

@@ -69,7 +69,7 @@ dependencies {
     implementation(libs.material3)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.collections.immutable)
 
-    implementation("se.premex.gross:ui")
+    implementation(projects.ui)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)

@@ -130,6 +130,103 @@ fun LicenseItem(artifact: Gross.Artifact) {
 }
 ```
 
+## Generated Sources Reference
+
+When using the Kotlin code generation feature (`enableKotlinCodeGeneration`), Gross generates Kotlin classes that provide type-safe access to your project's dependencies and their licenses. This section explains how to use the generated sources.
+
+### Generated Classes Structure
+
+The plugin generates the following classes in the `se.premex.gross` package:
+
+- **`Gross`**: A Kotlin object that contains the static list of artifacts
+  - `artifacts`: A `List<Artifact>` containing all your project's dependencies
+
+- **`Artifact`**: A data class representing a single dependency
+  - `groupId`: The Maven group ID (String)
+  - `artifactId`: The artifact ID (String)
+  - `version`: The version (String)
+  - `name`: The human-readable name of the artifact (String?)
+  - `spdxLicenses`: A list of standard SPDX licenses (List<SpdxLicenses>)
+  - `scm`: Source control management information (Scm?)
+  - `unknownLicenses`: Any licenses not conforming to SPDX standard (List<UnknownLicenses>)
+
+- **`SpdxLicenses`**: A data class representing a standard SPDX license
+  - `identifier`: The SPDX identifier (e.g., "Apache-2.0") (String)
+  - `name`: The full name of the license (String)
+  - `url`: The URL to the license text (String)
+
+- **`Scm`**: A data class containing source control information
+  - `url`: The URL to the source repository (String)
+
+- **`UnknownLicenses`**: A data class for non-standard licenses
+  - `name`: The name of the license (String)
+  - `url`: The URL to the license text (String)
+
+### Accessing Generated Sources
+
+The generated sources are available after the Gradle build process completes. To use them in your code:
+
+1. Make sure you have `enableKotlinCodeGeneration.set(true)` in your `gross` configuration.
+2. Build your project to generate the Kotlin classes.
+3. Import and use the `Gross.artifacts` object in your code.
+
+### Common Use Cases
+
+#### Basic Usage: Listing All Dependencies
+
+```kotlin
+// Access the list of artifacts
+val artifacts = Gross.artifacts
+
+// Print information about each artifact
+artifacts.forEach { artifact ->
+    println("${artifact.artifactId} (${artifact.groupId}:${artifact.version})")
+    
+    // Print SPDX licenses if available
+    artifact.spdxLicenses?.forEach { license ->
+        println("  - ${license.name} (${license.identifier}): ${license.url}")
+    }
+    
+    // Print unknown licenses if available
+    artifact.unknownLicenses?.forEach { license ->
+        println("  - ${license.name}: ${license.url}")
+    }
+}
+```
+
+#### Filtering Artifacts by License Type
+
+```kotlin
+// Find all artifacts with Apache-2.0 license
+val apacheLicensed = Gross.artifacts.filter { artifact ->
+    artifact.spdxLicenses?.any { it.identifier == "Apache-2.0" } == true
+}
+
+// Find artifacts without a license
+val unlicensed = Gross.artifacts.filter { artifact ->
+    (artifact.spdxLicenses == null || artifact.spdxLicenses.isEmpty()) &&
+    (artifact.unknownLicenses == null || artifact.unknownLicenses.isEmpty())
+}
+```
+
+#### Finding a Specific Dependency
+
+```kotlin
+// Find a specific artifact by coordinates
+val kotlin = Gross.artifacts.firstOrNull { 
+    it.groupId == "org.jetbrains.kotlin" && it.artifactId == "kotlin-stdlib" 
+}
+
+kotlin?.let {
+    println("Kotlin Standard Library version: ${it.version}")
+    println("License: ${it.spdxLicenses?.firstOrNull()?.name}")
+}
+```
+
+#### Creating UI Components
+
+See the [Usage Examples](#usage-examples) section for examples of creating UI components to display license information.
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

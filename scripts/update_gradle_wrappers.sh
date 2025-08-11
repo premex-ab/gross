@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Set the Gradle version you want to update to
-GRADLE_VERSION="${1:-8.6}"
+GRADLE_VERSION="${1:-latest}"
 
 # Save the root directory
 ROOT_DIR=$(pwd)

@@ -1,3 +1,6 @@
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
+
 pluginManagement {
     repositories {
         google()
@@ -15,8 +18,8 @@ pluginManagement {
 }
 
 plugins {
-    id("com.gradle.develocity") version "4.0.1"
-    id("org.gradle.toolchains.foojay-resolver-convention") version ("0.8.0")
+    id("com.gradle.develocity") version "4.1"
+    id("org.gradle.toolchains.foojay-resolver-convention") version ("1.0.0")
 }
 
 develocity {
@@ -39,14 +42,7 @@ rootProject.name = "Gross"
 
 includeBuild("gross-plugin")
 
-includeBuild("ui") {
-    dependencySubstitution {
-        substitute(module("se.premex.gross:ui"))
-            .using(project(":"))
-    }
-}
-includeBuild("core")
+include("ui")
+include("core")
 include(":app")
 
-enableFeaturePreview("STABLE_CONFIGURATION_CACHE")
- 

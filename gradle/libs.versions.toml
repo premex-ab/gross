@@ -27,7 +27,7 @@ androidx-compose-ui-ui-tooling = { module = "androidx.compose.ui:ui-tooling" }
 androidx-core-core-ktx = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
 androidx-test-ext-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit" }
 com-android-tools-build-gradle = { module = "com.android.tools.build:gradle", version.ref = "com-android-application" }
-com-google-truth = "com.google.truth:truth:1.4.4"
+com-google-truth = "com.google.truth:truth:1.4.5"
 com-squareup-kotlinpoet = "com.squareup:kotlinpoet:2.2.0"
 com-squareup-licensee = { module = "app.cash.licensee:licensee-gradle-plugin", version.ref = "licensee" }
 com-squareup-okio = "com.squareup.okio:okio:3.16.0"

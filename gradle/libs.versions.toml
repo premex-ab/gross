@@ -58,7 +58,7 @@ com-android-application = { id = "com.android.application", version.ref = "com-a
 com-android-library = { id = "com.android.library", version.ref = "com-android-application" }
 com-vanniktech-maven-publish = "com.vanniktech.maven.publish:0.34.0"
 io-gitlab-arturbosch-detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
-nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:1.0.0"
+nl-littlerobots-version-catalog-update = "nl.littlerobots.version-catalog-update:1.0.1"
 org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 org-jetbrains-kotlin-plugin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

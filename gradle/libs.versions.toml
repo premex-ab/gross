@@ -2,13 +2,13 @@
 activity-compose = "1.11.0"
 androidx-core = "1.17.0"
 androidx-test-ext-junit = "1.3.0"
-com-android-application = "8.12.1"
-compose-bom = "2025.08.00"
+com-android-application = "8.13.0"
+compose-bom = "2025.09.01"
 detekt = "1.23.8"
 espresso-core = "3.7.0"
 junit = "4.13.2"
 kotlin = "2.2.20"
-licensee = "1.13.0"
+licensee = "1.14.0"
 lifecycle-runtime-ktx = "2.9.4"
 
 [libraries]
@@ -42,7 +42,7 @@ org-jetbrains-kotlinx-kotlinx-coroutines-test = "org.jetbrains.kotlinx:kotlinx-c
 org-jetbrains-kotlinx-kotlinx-serialization-bom = "org.jetbrains.kotlinx:kotlinx-serialization-bom:1.9.0"
 org-jetbrains-kotlinx-kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json" }
 org-jetbrains-kotlinx-kotlinx-serialization-json-okio = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json-okio" }
-org-junit-junit-bom = "org.junit:junit-bom:5.13.4"
+org-junit-junit-bom = "org.junit:junit-bom:6.0.0"
 org-junit-jupiter-junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api" }
 org-junit-jupiter-junit-jupiter-params = { module = "org.junit.jupiter:junit-jupiter-params" }
 ui = { module = "androidx.compose.ui:ui" }

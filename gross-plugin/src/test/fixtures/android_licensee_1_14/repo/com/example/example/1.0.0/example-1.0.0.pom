@@ -1,0 +1,25 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.example</groupId>
+  <artifactId>example</artifactId>
+  <version>1.0.0</version>
+  <licenses>
+    <license>
+      <name>Apache-2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+    </license>
+    <license>
+      <name>Simplified BSD License</name>
+      <url>http://www.opensource.org/licenses/bsd-license</url>
+      <distribution>repo</distribution>
+    </license>
+    <license>
+      <name>Unknown License 1</name>
+      <url>https://premex.se/?v1</url>
+    </license>
+    <license>
+      <name>Unknown License 2</name>
+      <url>https://premex.se/?v2</url>
+    </license>
+  </licenses>
+</project>

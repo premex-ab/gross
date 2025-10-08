@@ -22,6 +22,7 @@ class FixtureTaskTest {
             "android_licensee_1_8",
             "android_licensee_1_11",
             "android_licensee_1_12",
+            "android_licensee_1_14",
         ]
     )
     fun checkDescriptionOfTasks(input: String) {

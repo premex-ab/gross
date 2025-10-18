@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json.okio)
     implementation(libs.com.squareup.okio)
     compileOnly(libs.com.squareup.licensee)
+    implementation("se.premex.gross:core:1.0")
 
     testImplementation(platform(libs.org.junit.junit.bom))
     testImplementation(libs.org.junit.jupiter.junit.jupiter.api)

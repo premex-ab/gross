@@ -9,7 +9,7 @@ espresso-core = "3.7.0"
 junit = "4.13.2"
 kotlin = "2.2.21"
 licensee = "1.14.0"
-lifecycle-runtime-ktx = "2.9.4"
+lifecycle-runtime-ktx = "2.10.0"
 
 [libraries]
 activity-compose = { module = "androidx.activity:activity-compose", version.ref = "activity-compose" }

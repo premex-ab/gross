@@ -10,6 +10,7 @@ Gross is a Gradle plugin that helps you manage and document open source licenses
 - **Kotlin Code Generation**: Generates a static list of open source artifacts with their licenses as Kotlin code
 - **Android Asset Generation**: Saves the licensee report as an Android asset for runtime access
 - **License Compliance**: Makes it easier to comply with open source license requirements in your projects
+- **Core Library**: Provides data classes for artifacts and licenses in a separate library that can be used by other modules
 
 ## Installation
 
@@ -90,6 +91,16 @@ You can use `AssetLicenseParser` to read and parse this file at runtime:
 
 ```kotlin
 val licenses = AssetLicenseParser(context).parse()
+```
+
+### Core Library
+
+The core module provides the data classes (`Artifact`, `SpdxLicenses`, `Scm`, `UnknownLicenses`) that can be used by other modules in your project. To use them, you just need to add a dependency to the core module:
+
+```kotlin
+dependencies {
+    implementation("se.premex.gross:core:1.0")
+}
 ```
 
 ## Usage Examples

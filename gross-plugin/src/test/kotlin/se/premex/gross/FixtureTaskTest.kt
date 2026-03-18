@@ -18,7 +18,7 @@ class FixtureTaskTest {
         strings = [
 //            "java_licensee_1_7",
 //            "java_licensee_1_8",
-            "android_licensee_1_7",
+//            "android_licensee_1_7", // licensee 1.7.0 is incompatible with AGP 9.0+
             "android_licensee_1_8",
             "android_licensee_1_11",
             "android_licensee_1_12",

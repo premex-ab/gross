@@ -41,7 +41,7 @@ kotlin {
 }
 
 dependencies {
-    api(projects.core)
+    api("se.premex.gross:core:1.0")
     implementation(libs.com.squareup.okio)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.compose.runtime)

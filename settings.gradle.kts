@@ -41,8 +41,8 @@ dependencyResolutionManagement {
 rootProject.name = "Gross"
 
 includeBuild("gross-plugin")
+includeBuild("core")
 
 include("ui")
-include("core")
 include(":app")
 

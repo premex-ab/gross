@@ -48,6 +48,7 @@ dependencies {
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json)
     implementation(libs.org.jetbrains.kotlinx.kotlinx.serialization.json.okio)
     implementation(libs.com.squareup.okio)
+    implementation("se.premex.gross:core:1.0")
     compileOnly(libs.com.squareup.licensee)
 
     testImplementation(platform(libs.org.junit.junit.bom))
@@ -73,6 +74,7 @@ group = "se.premex"
 tasks.named("test") {
     (this as Test).systemProperties["grossVersion"] = version
     dependsOn(":publishAllPublicationsToTestingRepository")
+    dependsOn(gradle.includedBuild("core").task(":publishAllPublicationsToTestingRepository"))
 }
 
 publishing {

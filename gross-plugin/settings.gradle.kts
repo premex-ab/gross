@@ -1,5 +1,11 @@
 rootProject.name = "gross-plugin"
 
+includeBuild("../core") {
+    dependencySubstitution {
+        substitute(module("se.premex.gross:core")).using(project(":"))
+    }
+}
+
 pluginManagement {
     repositories {
         gradlePluginPortal()

@@ -29,6 +29,9 @@ jobs:
         id: find_version
         run: ./scripts/generate_versions.sh
 
+      - name: Publish core to mavenLocal
+        run: cd core && ../gradlew publishToMavenLocal
+
       - name: Run verifications
         run: ./gradlew check --scan
 

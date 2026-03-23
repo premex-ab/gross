@@ -1,6 +1,7 @@
 pluginManagement {
     repositories {
         maven(url = "file://${settingsDir.absolutePath}/../../../../build/localMaven")
+        mavenLocal()
         google()
         gradlePluginPortal()
         mavenCentral()

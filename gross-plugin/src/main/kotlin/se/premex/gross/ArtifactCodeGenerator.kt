@@ -30,9 +30,10 @@ class ArtifactCodeGenerator(
             arguments.add(artifact.groupId)
             arguments.add(artifact.artifactId)
             arguments.add(artifact.version)
-            if (artifact.name != null) {
+            val artifactName = artifact.name
+            if (artifactName != null) {
                 appendLine("""name = %S,""")
-                arguments.add(artifact.name)
+                arguments.add(artifactName)
             } else {
                 appendLine("""name = null,""")
             }
@@ -48,10 +49,11 @@ class ArtifactCodeGenerator(
             }
             appendLine("""),""")
 
-            if (artifact.scm != null) {
+            val artifactScm = artifact.scm
+            if (artifactScm != null) {
                 appendLine("""scm = %T(%S), """.trimMargin())
                 arguments.add(ClassName(packageName, scmTypeSpec.name!!))
-                arguments.add(artifact.scm.url)
+                arguments.add(artifactScm.url)
             } else {
                 appendLine("""scm = null, """.trimMargin())
             }

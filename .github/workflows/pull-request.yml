@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '["ubuntu-latest"]' || '["self-hosted", "tart"]') }}
 
     steps:
       - name: Check out code
@@ -23,6 +23,9 @@ jobs:
         with:
           distribution: zulu
           java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
@@ -45,7 +48,7 @@ jobs:
           path: '**/build/test-results/test/*'
 
   ui-check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '["ubuntu-latest"]' || '["self-hosted", "tart"]') }}
 
     steps:
       - name: Check out code
@@ -57,6 +60,9 @@ jobs:
         with:
           distribution: zulu
           java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
@@ -79,7 +85,7 @@ jobs:
           path: '**/build/test-results/test/*'
 
   core-check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '["ubuntu-latest"]' || '["self-hosted", "tart"]') }}
 
     steps:
       - name: Check out code
@@ -91,6 +97,9 @@ jobs:
         with:
           distribution: zulu
           java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
@@ -113,7 +122,7 @@ jobs:
           path: '**/build/test-results/test/*'
 
   plugin-check:
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '["ubuntu-latest"]' || '["self-hosted", "tart"]') }}
 
     steps:
       - name: Check out code
@@ -125,6 +134,9 @@ jobs:
         with:
           distribution: zulu
           java-version: 17
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
 
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v3
@@ -148,7 +160,7 @@ jobs:
           path: '**/build/test-results/test/*'
   ci:
     name: CI
-    runs-on: ubuntu-latest
+    runs-on: ${{ fromJSON(github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name != github.repository && '["ubuntu-latest"]' || '["self-hosted", "tart"]') }}
     if: always()
     needs:
       - check
